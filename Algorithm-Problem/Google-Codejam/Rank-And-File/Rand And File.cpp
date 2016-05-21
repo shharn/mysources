@@ -1,4 +1,4 @@
-// question from -> https://code.google.com/codejam/contest/4304486/dashboard#s=p1&a=1
+// problem from -> https://code.google.com/codejam/contest/4304486/dashboard#s=p1&a=1
 
 #include <iostream>
 #define INPUT_PATH "B-large-practice.in"
