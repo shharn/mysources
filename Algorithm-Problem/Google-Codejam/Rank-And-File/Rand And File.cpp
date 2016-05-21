@@ -23,7 +23,7 @@ void main() {
 			}
 		}
 		cout << "Case #" << currT << ": ";
-		for (int i = 0; i < 2500; i++) if (flag[i]) cout << i << " ";
+		for (int i = 0; i < 2501; i++) if (flag[i]) cout << i << " ";
 		cout << endl;
 	}
 	_fcloseall();
