@@ -1,0 +1,15 @@
+<form ng-submit="submitNewPost()" style="margin-top:20px">
+	<div class="form-group">
+		<input type="text" class="form-control" 
+		placeholder="Title" ng-model="post.title"></input>
+    </div>
+    	
+	<div class="form-group">
+		<input type="text" class="form-control" 
+		placeholder="Body" ng-model="post.body" style="height:400px;"></input>
+    </div>
+	 
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-primary" 
+    onclick="cancel()">Cancel</button>
+</form>

@@ -1,0 +1,1 @@
+angular.module('loginModule', ['authModule', 'ui.router', 'authModule']);
