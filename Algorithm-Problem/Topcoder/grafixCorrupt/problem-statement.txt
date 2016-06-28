@@ -1,3 +1,7 @@
+##################################################################################
+      page : https://arena.topcoder.com/#/u/practiceCode/1417/2770/2997/2/1417
+##################################################################################
+
 Problem Statement
 In the grafix file format, a bitmap is encoded as a sequence of lowercase alphabetic words. 
 All of these words are drawn from a dictionary that has been built specially for the bitmap by a compression algorithm. 
