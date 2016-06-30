@@ -1,12 +1,16 @@
+
 <div class="page-header">
-   	<h1>{{username}} Board</h1>
+   	<span><h1>{{user.username}}'s Board</h1></span>
 </div>
 
 <!-- use query.skip(number of post to be skipped) 
 and limit(number of post to be displayed on this page-->
 
-<table class="table">
-	<thead class="thead-inverse">
+<strong>Total : {{user.numberPosts}}</strong>
+<br>
+
+<table class="table table-inverse">
+	<thead>
 		<tr>
 			<th>No.</th>
 			<th>Title</th>
@@ -14,18 +18,19 @@ and limit(number of post to be displayed on this page-->
 		</tr>
 	</thead>
 	<tbody>
-		<div ng-repeat="post in posts">
-		<tr>
-			<td>{{currentNumber}}</td>
-			<td>{{post.title}}</td>
+		<tr ng-repeat="post in user.posts">
+			<th scope="row">{{user.numberPosts - $index - 
+			(currentPageNumber - 1) * 10}}</th>
+			<td>{{post.title | date:'yyyy-MM-dd HH:mm:ss'}}</td>
 			<td>{{post.date}}</td>
 		</tr>
 	</tbody>
 </table>
 
-<form ng-submit="logIn()" style="margin-top:20px">
-    <button type="button" class="btn btn-primary" 
-    onclick="location.href='/#/new-post';">New post</button>
+<form ng-submit="newPost()" style="margin-top:20px">
+    <button type="submit" class="btn btn-primary">New post</button>
 </form>
 
+
 <!--here is for the numbers represent the prev/next page--> 
+<ul class="pagination">
