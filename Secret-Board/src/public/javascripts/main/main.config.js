@@ -19,10 +19,15 @@ angular
 							templateUrl: '/views/posts-list.html',
 							controller: 'postsListController',
 							resolve: {
-								posts: ['$stateParams', 'post', function($stateParams, post){
+								userPromise: ['$stateParams', 'post', function($stateParams, post){
 									return post.getPosts($stateParams.userid);
 								}]
 							}
+						})
+						.state('newpost', {
+							url: '/:userid/posts/newpost/',
+							templateUrl: '/views/new-post.html',
+							controller: 'newpostController'
 						});
 					
 					$urlRouterProvider.otherwise('home');
