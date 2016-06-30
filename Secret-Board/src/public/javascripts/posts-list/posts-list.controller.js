@@ -1,9 +1,13 @@
 angular
 	.module('postsListModule')
 		.controller('postsListController',
-				['$scope', 'posts', 'auth', function($scope, posts, auth){
-					$scope.posts = posts;
-					$scope.username = auth.username;
+				['$scope', '$state', 'post', 'auth', function($scope, $state, post, auth){
+					$scope.user = post.user;
+					$scope.currentPageNumber = 1;
+					$scope.newPost = function(){
+						$state.go('newpost', {userid: $scope.user._id});
+					};
+					
 					$scope.logOut = function(){
 						auth.logOut();
 					};
