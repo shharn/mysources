@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Post = mongoose.model('Post');
 var passport = require('passport');
 var jwt = require('express-jwt');
 var auth = jwt({secret:'SECRET', userProperty:'payload'});
@@ -59,23 +60,29 @@ router.param('userid', function(req, res, next, id){
 	});
 });
 
-router.get('/:userid/posts', auth, function(req, res, next){
+router.param("pagenum", function(req, res, next, id){
+	
+});
+
+
+
+router.get('/:userid/posts/', auth, function(req, res, next){
 	var data = {};
 	data.numberPosts = req.user.numberPosts;
-	
 	var options = {
 			path : 'posts',
 			options: {sort:{date:-1}}
 	};
-	req.user.populate(options).exec(function(err, posts){
-		if(err){
-			return next(err);
-		}
-		
-		data.posts = posts;
-		console.log("posts : " + data.posts);
-		res.json(data);
-	});
+	User.populate(req.user, {path : 'posts', options: {sort:{date:-1}, limit:10}}, 
+			function(err, user){
+				if(err){
+					console.log(err);
+					return next(err);
+				}
+				data.user = user;
+				res.json(user);
+			}
+	);
 });
 
 router.post('/:userid/posts/newpost', auth, function(req, res, next){
@@ -83,14 +90,18 @@ router.post('/:userid/posts/newpost', auth, function(req, res, next){
 		title:req.body.title,
 		body:req.body.body,
 		date: Date.now(),
-		userid: req.user._id
+		userid: req.user
 	}, function(err, newpost){
-		req.user.comments.push(newpost);
+		if(err){
+			console.log(err);
+			next(err);
+		}
+		req.user.posts.push(newpost);
 		req.user.numberPosts += 1;
 		req.user.save(function(err, updatedUser){
 			if(err) return next(err);
 			
-			res.json(updateUser);
+			res.json(updatedUser);
 		});
 	});
 });
