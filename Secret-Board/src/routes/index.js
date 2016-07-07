@@ -61,19 +61,24 @@ router.param('userid', function(req, res, next, id){
 });
 
 router.param("pagenum", function(req, res, next, id){
-	
+	if(!id)
+		return next(new Error('invalid page number'));
+	req.param.pagenum = id;
+	return next();
 });
 
 
 
-router.get('/:userid/posts/', auth, function(req, res, next){
+router.get('/:userid/posts/:pagenum', auth, function(req, res, next){
 	var data = {};
 	data.numberPosts = req.user.numberPosts;
 	var options = {
 			path : 'posts',
 			options: {sort:{date:-1}}
 	};
-	User.populate(req.user, {path : 'posts', options: {sort:{date:-1}, limit:10}}, 
+	User.populate(req.user, {path : 'posts', options: {sort:{date:-1}, 
+														limit:10, 
+														skip:(req.param.pagenum - 1) * 10}}, 
 			function(err, user){
 				if(err){
 					console.log(err);
@@ -106,9 +111,60 @@ router.post('/:userid/posts/newpost', auth, function(req, res, next){
 	});
 });
 
-router.get('/:userid/posts/:postid/', auth, function(req, res, next){
-	
+router.param('postid', function(req, res, next, id){
+	req.param.postid = id;
+	return next();
+}); 
+
+router.post('/:userid/post/:postid/delete', auth, function(req, res, next){
+	var queryPost = Post.findById(req.param.postid);
+	queryPost.exec(function(err, post){
+		if(err){
+			console.log("[ERR] router.post('/:userid/post/:postid/delete");
+			console.log(err);
+			next(err);
+		}
+		
+		req.user.posts.map(function(post){
+			if(post._id !== req.param.postid) return post;
+		});
+		
+		req.user.numberPosts -=1;
+		req.user.save(function(err){
+			if(err){
+				console.log("[ERR] req.user.save() in router.post('/:userid/post/:postid/delete");
+				console.log(err);
+				next(err);
+			}
+			post.remove(function(err){
+				if(err){
+					console.log("[ERR] removePromise.exec() router.post('/:userid/post/:postid/delete");
+					console.log(err);
+					next(err);
+				}
+				console.log("delete post operation succeed");
+				var message = "Deletion successfully completed";
+				res.status(200).send(message);
+			});
+		});
+	});
 });
 
+router.post('/:userid/post/:postid/edit', auth, function(req, res, next){
+	var query = Post.findById(req.param.postid);
+	query.exec(function(err, post){
+		post.title = req.body.title;
+		post.body = req.body.body;
+		post.save(function(err){
+			if(err){
+				console.log("[ERR] post.save function IN router.post('/:userid/post/:postid/edit')");
+				console.log(err);
+				next(err);
+			}
+			console.log("edit post operation succeed");
+			res.status(200).send();
+		});
+	});
+});
 
 module.exports = router;
