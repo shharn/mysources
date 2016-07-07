@@ -1,1 +1,1 @@
-angular.module('postsListModule', ['postModule']);
+angular.module('postsListModule', ['postModule', 'ui.router']);
