@@ -77,8 +77,8 @@ router.get('/:userid/posts/:pagenum', auth, function(req, res, next){
 			options: {sort:{date:-1}}
 	};
 	User.populate(req.user, {path : 'posts', options: {sort:{date:-1}, 
-														limit:10, 
-														skip:(req.param.pagenum - 1) * 10}}, 
+								limit:10, 
+								skip:(req.param.pagenum - 1) * 10}}, 
 			function(err, user){
 				if(err){
 					console.log(err);
