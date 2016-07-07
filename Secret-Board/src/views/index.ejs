@@ -2,11 +2,13 @@
 <html ng-app="secretBoard">
   <head>
     <title>Welcome to Secret Board</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://code.angularjs.org/1.5.3/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://code.angularjs.org/1.5.3/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+	
     <script src="/javascripts/main/main.module.js"></script>
     <script src="/javascripts/main/main.config.js"></script>
     <script src="/javascripts/login/login.module.js"></script>
@@ -17,16 +19,39 @@
     <script src="/javascripts/register/register.controller.js"></script>
     <script src="/javascripts/post/post.module.js"></script>
     <script src="/javascripts/post/post.factory.js"></script>
+    <script src="/javascripts/post/post.controller.js"></script>
     <script src="/javascripts/posts-list/posts-list.module.js"></script>
     <script src="/javascripts/posts-list/posts-list.controller.js"></script>
     <script src="/javascripts/new-page/new-post.module.js"></script>
     <script src="/javascripts/new-page/new-post.controller.js"></script>
+      
+    <style>
+    .outer {
+    	display: table;
+    	position: absolute;
+    	height: 100%;
+    	width: 100%;
+	}
+
+	.middle {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+	
+	.inner {
+	    margin-left: auto;
+	    margin-right: auto; 
+	    width: 50%;
+	}
+   	</style>
   </head>
   <body>
-  	<div class="row">
-  		<div class="col-md-6 col-md-offset-3">
-    		<ui-view></ui-view>
-    	</div>
-    </div>
+  	<div class="outer">
+  	<div class="middle">
+  	<div class="inner">
+		<ui-view></ui-view>
+	</div>
+	</div>
+	</div>
   </body>
 </html>
