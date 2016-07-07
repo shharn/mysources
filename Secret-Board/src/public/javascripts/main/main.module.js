@@ -5,4 +5,5 @@ angular.module('secretBoard',
 		 'registerModule',
 		 'postModule',
 		 'postsListModule',
+		 'newpostModule',
 		 ]);
