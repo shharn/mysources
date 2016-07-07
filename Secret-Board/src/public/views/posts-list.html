@@ -1,36 +1,53 @@
 
-<div class="page-header">
-   	<span><h1>{{user.username}}'s Board</h1></span>
-</div>
-
-<!-- use query.skip(number of post to be skipped) 
-and limit(number of post to be displayed on this page-->
-
-<strong>Total : {{user.numberPosts}}</strong>
-<br>
-
-<table class="table table-inverse">
-	<thead>
-		<tr>
-			<th>No.</th>
-			<th>Title</th>
-			<th>Date</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="post in user.posts">
-			<th scope="row">{{user.numberPosts - $index - 
-			(currentPageNumber - 1) * 10}}</th>
-			<td>{{post.title | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-			<td>{{post.date}}</td>
-		</tr>
-	</tbody>
-</table>
-
-<form ng-submit="newPost()" style="margin-top:20px">
-    <button type="submit" class="btn btn-primary">New post</button>
-</form>
-
-
-<!--here is for the numbers represent the prev/next page--> 
-<ul class="pagination">
+<div id="container">
+	<nav class="navbar navbar-light pull-right" ng-controller="NavController">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a> {{currentUser}}</a></li>
+			<li class="nav-item"><a href="" ng-click="logOut()">Log Out</a></li>
+		</ul>
+	</nav>
+	
+	<div class="page-header">
+	   	<span><h1>{{user.username}}'s Board</h1></span>
+	</div>
+	
+	<div align="right">
+		<button type="button" ng-click="newPost()" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
+	</div>
+	<br>
+	
+	<div align="center">
+		<table class="table">
+			<thead class="thead-inverse">
+				<tr>
+					<th>No.</th>
+					<th>Title</th>
+					<th>Last Modified</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="post in user.posts" ng-click="goPost($index)">
+					<th scope="row">{{user.numberPosts - $index - 
+					(currentPage - 1) * 10}}</th>
+					<td>{{post.title}}</td>
+					<td>{{post.date  | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<!--here is pagination-->
+		<ul class="pagination">
+			<li ng-show="isPrevExist()">
+				<a ng-click="changePage((currentPage - 1) - (currentPage - 1) % 10)" href="">&laquo;</a>
+			</li>
+			<li ng-repeat="num in pageArr">
+				<a ng-click="changePage(num)" href="">{{num}}</a>
+			</li>		
+			<li ng-show="isNextExist()">
+				<a ng-click="changePage((currentPage - 1) - (currentPage - 1) % 10 + 11)" href="">&raquo;</a>
+			</li>
+		</ul>
+	</div>
+</div>			
