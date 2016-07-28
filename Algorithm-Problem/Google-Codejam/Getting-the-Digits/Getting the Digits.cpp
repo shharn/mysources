@@ -21,7 +21,6 @@ int main() {
 		string tmp;
 		cin >> tmp;
 		memset(n, 0, sizeof(n));
-		memset(b, 0, sizeof(b));
 		for (int i = 0; i < tmp.length(); i++)
 			b[tmp[i] - 'A']++;
 
