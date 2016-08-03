@@ -56,13 +56,9 @@ int main() {
 		diff = LL_MAX; ansC.clear(); ansJ.clear();
 		string C, J;
 		cin >> C >> J;
-		//cout << C << " " << J << " - ";
 		int n = C.length();
 		bool done = false;
 		FOR0(i, n) {
-			if (currT == 6) {
-				currT = currT;
-			}
 			if (C[i] != '?' && J[i] != '?') {
 				int a = C[i] - '0';
 				int b = J[i] - '0';
