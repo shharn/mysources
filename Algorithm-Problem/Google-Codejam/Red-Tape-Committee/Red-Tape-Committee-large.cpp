@@ -15,7 +15,7 @@ vector<ld> prob, whole;
 ld prob2[MAX][MAX];
 
 ld calcProb(int r, int c) {
-  memset(prob2, 0, sizeof(prob2));
+	memset(prob2, 0, sizeof(prob2));
 	prob2[0][0] = 1 - prob[0];
 	prob2[1][0] = prob[0];
 	FOR0(i, r+1) FOR0(j, c){
