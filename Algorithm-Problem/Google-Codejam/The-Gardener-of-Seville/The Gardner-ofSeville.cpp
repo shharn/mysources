@@ -77,7 +77,6 @@ bool check(int R, int C) {
 	return true;
 }
 
-// 0 : not tried, 1 : /, 2 : \, 3 : end
 void push_next(stack<pii>& s, int cr, int cc, int R, int C) {
 	if (cr == R - 1 && cc == C - 1) return;
 	int nr = cc < (C - 1) ? cr : cr + 1;
