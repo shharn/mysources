@@ -32,7 +32,7 @@ namespace large {
 
 	void print(int R, int C) {
 		FOR1(i, 0, R) {
-			FOR1(j, 0, C) std::cout << ch[hedge[i][j] - 1];
+			FOR1(j, 0, C) std::cout << (hedge[i][j] - 1 ? ch[hedge[i][j] - 1] : '/');
 			std::cout << std::endl;
 		}
 	}
