@@ -5,6 +5,7 @@
 #define OUTPUT_PATH "B-small-out.out"
 #define fori0(i, s, e) for(int (i)=(s); (i)<(e); (i)++)
 #define fori1(i, s, e) for(int (i)=(s); (i)<=(e); (i)++)
+#define forit(type, it, container) for(type::iterator (it) = container.begin(); (it) != container.end(); (it)++)
 
 mll members[4];
 int N;
