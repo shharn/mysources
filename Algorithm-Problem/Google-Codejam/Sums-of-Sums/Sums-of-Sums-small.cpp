@@ -37,12 +37,12 @@ void solve(int N, int Q, int ct) {
 }
 
 int main() {
-  freopen(SMALL_INPUT_PATH, "r", stdin);
-  freopen(SMALL_OUTPUT_PATH, "w", stdout);
-  int T;
-  std::cin >> T;
-  fori1(ct, 1, T) {
-	int N, Q;
+	freopen(SMALL_INPUT_PATH, "r", stdin);
+	freopen(SMALL_OUTPUT_PATH, "w", stdout);
+	int T;
+	std::cin >> T;
+	fori1(ct, 1, T) {
+		int N, Q;
 		std::cin >> N >> Q;
 		small::solve(N, Q, ct);
 	}
