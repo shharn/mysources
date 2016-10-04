@@ -12,14 +12,14 @@ public:
 		int minidx,mindif=10000;
 		fori1(i,1,N){
 			int up = abs(A*i);
-			int down = abs(B*N-1);
+			int down = abs(B*(N-i));
 			if(mindif > abs(up-down)){
 				mindif = abs(up-down);
 				minidx = i;
 			}
 		}
 		int up=abs(A*minidx);
-		int down = abs(B*N-minidx);
+		int down = abs(B*(N-minidx));
 		return (up > down?down:up);
 	}
 };
