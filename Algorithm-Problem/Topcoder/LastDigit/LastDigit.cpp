@@ -22,7 +22,7 @@ public:
 
 	ll findX(ll S) {
 		ll low = 0, high = S;
-		while (low < high) {
+		while (low <= high) {
 			ll mid = (low + high) >> 1;
 			ll t = calc(mid);
 			if (t > S)
