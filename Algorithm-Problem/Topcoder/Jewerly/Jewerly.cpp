@@ -46,7 +46,7 @@ public:
 			while (equal < n && copy[equal] == copy[i]) equal++;
 			int size = equal - i;
 			fori1(j, 1, size) {
-				int subsum = j * list[i];
+				int subsum = j * copy[i];
 				fori1(ss, subsum, 30000)
 					ans += forward[i][ss - subsum] * backward[n - i - j][ss] * nck[size][j];
 			}
