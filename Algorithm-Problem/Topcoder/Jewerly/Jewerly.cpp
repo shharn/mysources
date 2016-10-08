@@ -36,14 +36,14 @@ public:
 		vi copy(list);
 		int n = (int)list.size();
 		makeCombi();
-		sort(copy.begin(), copy.end());
-		knapsack(copy, forward);
 		sort(copy.begin(), copy.end(), std::greater<int>());
 		knapsack(copy, backward);
+		sort(copy.begin(), copy.end());
+		knapsack(copy, forward);
 		ll ans = 0;
 		fori0(i, 0, n) {
 			int equal = i;
-			while (equal < n && list[equal] == list[i]) equal++;
+			while (equal < n && copy[equal] == copy[i]) equal++;
 			int size = equal - i;
 			fori1(j, 1, size) {
 				int subsum = j * list[i];
