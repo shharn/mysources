@@ -12,13 +12,6 @@ typedef long long ll;
 typedef vector<pair<ll, string>> vpls;
 class Lottery {
 public:
-	int s2i(string s) {
-		stringstream ss(s);
-		int n;
-		ss >> n;
-		return n;
-	}
-
 	void parse(string org, string& name, int& ch, int& bl, bool& sort, bool& uni) {
 		stringstream ss(org);
 		string s,u;
