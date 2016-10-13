@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <cstring>
 #include <vector>
-#include <map>
 #include <sstream>
 using namespace std;
 #define fori0(i,s,e) for(int (i)=(s);(i)<(e);(i)++)
@@ -21,19 +20,12 @@ public:
 	}
 
 	void parse(string org, string& name, int& ch, int& bl, bool& sort, bool& uni) {
-		int pos1 = org.find(":"), pos2;
-		name = org.substr(0, pos1);
-		pos1 += 2;
-		pos2 = pos1;
-		pos1 = org.find(" ", pos2);
-		ch = s2i(org.substr(pos2, pos1 - pos2));
-		pos2 = pos1+1;
-		pos1 = org.find(" ", pos2);
-		bl = s2i(org.substr(pos2, pos1 - pos2));
-		pos2 = pos1 + 1;
-		pos1 = org.find(" ", pos2);
-		sort = org.substr(pos2, 1) == "T" ? true : false;
-		uni = org.substr(pos2 + 2, 1) == "T" ? true : false;
+		stringstream ss(org);
+		string s,u;
+		getline(ss,name,':');
+		ss >> ch >> bl >> s >> u;
+		sort = s == "T" ? true : false;
+		uni = u == "T" ? true : false;
 	}
 
 	ll TT(int ch, int bl) {
