@@ -24,8 +24,8 @@ public:
   int go(int l, int r, int sum){
     if(l>=r) return 0;
     ll num = s2l(S.substr(l));
-    if(num < sum) memo[sum][l][r]=-1;
-    if(num==sum) memo[sum][l][r]=1;
+    if(num < sum) return memo[sum][l][r]=-1;
+    if(num==sum) return memo[sum][l][r]=1;
     int min=-1;
     fori1(i,l+1,r){
       int t = s2l(S.substr(l,i-l));
