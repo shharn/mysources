@@ -11,25 +11,25 @@ using namespace std;
 typedef vector<int> vi;
 class FlowerGarden{
 public:
-  vi getOrdering(vi h, vi b, vi w){
-    int n=sz(h);
-    vi ans;
-    bool done[50]={0};
-    fori0(i,0,n){
-      int best=-1;
-      fori0(j,0,n){
-        if(!done[j]){
-            bool candidate=true;
-            fori0(k,0,n){
-                if(k!=j&&!done[k]&&h[k]<h[j]&&b[k]<=w[j]&&w[k]>=b[j])
-                    candidate=false;
-            }
-            if(candidate&&(best==-1 || h[best]<h[j]) best=j;
-        }
-      }
-      ans.push_back(h[best]);
-      done[best]=true;
-    }
-    return ans;
-  }
+	vi getOrdering(vi h, vi b, vi w){
+		int n=sz(h);
+		vi ans;
+		bool done[50]={0};
+		fori0(i,0,n){
+			int best=-1;
+			fori0(j,0,n){
+				if(!done[j]){
+					bool candidate=true;
+					fori0(k,0,n){
+						if(k!=j&&!done[k]&&h[k]<h[j]&&b[k]<=w[j]&&w[k]>=b[j])
+							candidate=false;
+					}
+					if(candidate&&(best==-1 || h[best]<h[j]) best=j;
+				}
+			}
+			ans.push_back(h[best]);
+			done[best]=true;
+		}
+		return ans;
+	}
 };
