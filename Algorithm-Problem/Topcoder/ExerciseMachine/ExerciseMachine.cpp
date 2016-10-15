@@ -11,7 +11,7 @@ int getSecond(string t){
   string tm;
   while(i<3){
     getline(ss,tm,':');
-    t[i]=atoi(tm.c_str());
+    t[i++]=atoi(tm.c_str());
   }
   return t[0]*3600+t[1]*60+t[2];
 }
