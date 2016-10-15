@@ -12,8 +12,8 @@ typedef vector<int> vi;
 class FlowerGarden{
 public:
 	vi getOrdering(vi h, vi b, vi w){
-		int n=sz(h);
 		vi ans;
+		int n=sz(h);
 		bool done[50]={0};
 		fori0(i,0,n){
 			int best=-1;
@@ -24,10 +24,10 @@ public:
 						if(k!=j&&!done[k]&&h[k]<h[j]&&b[k]<=w[j]&&w[k]>=b[j])
 							candidate=false;
 					}
-					if(candidate&&(best==-1 || h[best]<h[j]) best=j;
+					if(candidate && (best==-1 || h[best]<h[j])) best=j;
 				}
 			}
-			ans.push_back(h[best]);
+			res.push_back(h[best]);
 			done[best]=true;
 		}
 		return ans;
