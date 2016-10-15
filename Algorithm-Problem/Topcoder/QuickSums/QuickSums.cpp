@@ -15,7 +15,7 @@ public:
   int len;
   string S;
   ll s2l(string s){
-    istringstrea is(s);
+    istringstream is(s);
     ll n;
     is >> n;
     return n;
