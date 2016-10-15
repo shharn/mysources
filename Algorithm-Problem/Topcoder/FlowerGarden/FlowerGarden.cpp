@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-#define fori0(i,s,e) for(int (i)=(s);(i)<(e);(i)++)
+#define fori0(i,s,e) for(int (i)=(s);(i)<(e);(i)++) 
 #define fori1(i,s,e) for(int (i)=(s);(i)<=(e);(i)++)
 #define forit(it, c) for(auto (it)=(c).begin();(it)!=(c).end();(it)++)
 #define sz(c) ((int)(c).size())
