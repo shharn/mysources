@@ -35,7 +35,7 @@ public:
         
         map<int, int> m;
         int ct=0;
-        // transform for algorithm optimization
+        // transform for optimization
         forit(it, e) m[*it]=ct++;
         
         // caculate the number of edges at each optimized point
