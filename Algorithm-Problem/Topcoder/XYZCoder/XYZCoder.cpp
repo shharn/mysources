@@ -3,7 +3,6 @@
 #include <cstring>
 using namespace std;
 #define fori0(i,s,e) for(int (i)=(s);(i)<(e);(i)++)
-#define sz(c) ((int)(c).size())
 typedef long long ll;
 const ll mod=1000000007;
 class XYZCoder{
