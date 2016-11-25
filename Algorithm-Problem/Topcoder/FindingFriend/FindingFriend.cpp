@@ -1,6 +1,5 @@
 // problem at : SRM 700 Div1 Level One
 //              https://community.topcoder.com/stat?c=problem_statement&pm=14166&rd=16821
-
 #include <vector>
 #include <algorithm>
 using namespace std;
