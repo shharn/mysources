@@ -82,16 +82,16 @@ public class JSONParser {
 
         StringTokenizer tokenizer = new StringTokenizer(listInString, ",");
         while(tokenizer.hasMoreTokens()) {
-            String token = tokenizer.nextToken();
+            String token = tokenizer.nextToken().trim();
             if(token.charAt(0) == '"') { // String value
-                JSONString stringValue = new JSONString(getString());
+                JSONString stringValue = new JSONString(token.substring(1, token.length() - 1));
                 list.getList().add(stringValue);
             } else if(Pattern.matches("\\d", String.valueOf(token.charAt(0)))) { // Integer value
-                JSONInteger integerValue = getInteger();
+                JSONInteger integerValue = new JSONInteger(Integer.valueOf(token));
                 list.getList().add(integerValue);
-            } else if(token.charAt(0) == '{') { // Object value
+            /*} else if(token.charAt(0) == '{') { // Object value
                 JSONObject objectValue = getObject();
-                list.getList().add(objectValue);
+                list.getList().add(objectValue);*/
             } else {
                 throw new InvalidJSONFormatException("Invalid JSON Format - currCh is " + currCh);
             }
@@ -107,10 +107,10 @@ public class JSONParser {
             String key = getKey();
             skipThisPattern("\\s");
             JSONObject value = getValue();
-
             obj.getContainer().put(key, value);
+            skipThisPattern("[,\\s]");
         }
-        skipThisPattern("\\s");
+        //skipThisPattern("\\s");
         assert(currCh == '}');
         if(currCh != '}') {
             throw new InvalidJSONFormatException("Invalid JSON Format - " + currCh +
@@ -133,17 +133,7 @@ public class JSONParser {
         } else {
             throw new InvalidJSONFormatException("Invalid JSON Format");
         }
-
-        ////////////////////////////////////////////////
-        // here, check if next non-whitespace character is ',' | '}' //
-        ////////////////////////////////////////////////
-        //               start here !!                //
-        ////////////////////////////////////////////////
-        skipThisPattern("\\s");
-        if(currCh == ',') {
-
-        } else if(currCh == '}')
-
+        nextChar();
         return object;
     }
 
@@ -159,7 +149,6 @@ public class JSONParser {
                 }
                 do {
                     obj = getObject();
-                    nextChar();
                 } while (currCh != '}');
                 assert (currCh == '}');
                 if (currCh != '}') {

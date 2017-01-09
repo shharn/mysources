@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -5,10 +6,15 @@ import java.util.List;
  */
 public class JSONList extends JSONObject {
     private List<JSONObject> values;
+
+    JSONList(){
+        values = new ArrayList<JSONObject>();
+    }
+
     void print(){
         System.out.print("Print List - ");
         for(JSONObject member : values)
-            System.out.print(member + " ");
+            member.print();
     }
 
     JSONObject search(String key){

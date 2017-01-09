@@ -6,6 +6,10 @@ public class JSONParserApp {
         JSONParserApp app = new JSONParserApp();
         JSONParser parser = new JSONParser("sample_json.json");
         JSONObject obj = app.run(parser);
+        obj.print();
+        obj.search("b").print();
+        obj.search("c").print();
+        obj.search("d").print();
     }
 
     public static JSONObject run(JSONParser parser){

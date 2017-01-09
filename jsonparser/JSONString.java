@@ -7,7 +7,7 @@ public class JSONString extends JSONObject{
         values = value;
     }
 
-    void print(String key){
+    void print(){
         System.out.print("Print String - ");
         System.out.print(values);
     }

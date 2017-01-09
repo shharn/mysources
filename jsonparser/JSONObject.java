@@ -23,8 +23,18 @@ public class JSONObject {
     }
 
     JSONObject search(String key){
-        JSONObject obj = values.get(key);
-        return obj.search(key);
+        if(values.containsKey(key))
+            return values.get(key);
+        else {
+            for(Map.Entry<String, JSONObject> entry : values.entrySet()) {
+                // We need to fix it
+                // only traveling into JSONObject object
+                JSONObject value = entry.getValue();
+                if(value.search(key) != null)
+                    return value.search(key);
+            }
+        }
+        return null;
     }
 
     LinkedHashMap<String, JSONObject> getContainer(){

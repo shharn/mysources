@@ -3,6 +3,7 @@
  */
 public class JSONInteger extends JSONObject {
     private int values;
+
     JSONInteger(int n){
         this.values = n;
     }
